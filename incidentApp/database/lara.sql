@@ -226,7 +226,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'Фуников Андрей','funikov.1997@mail.ru',NULL,'$2y$10$F.RqebCrjKMeqQg1jWXjqeKlig.C.7A3qwdiUNiEAZKRtNhKZy6ua',NULL,'2022-10-26 05:55:57','2022-10-26 05:55:57');
+INSERT INTO `users` VALUES (1,'Фуников Андрей','user_example@mail.ru',NULL,'$2y$10$F.RqebCrjKMeqQg1jWXjqeKlig.C.7A3qwdiUNiEAZKRtNhKZy6ua',NULL,'2022-10-26 05:55:57','2022-10-26 05:55:57');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
