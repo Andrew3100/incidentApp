@@ -1,5 +1,7 @@
 @php
     use Illuminate\Support\Facades\Auth;
+    $types = new \App\Models\incident_groups();
+    $data_types = $types->all();
 @endphp
 <!doctype html>
 <html lang="ru">
@@ -9,8 +11,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <title>Привет мир!</title>
+    <title>АИС "Управление инцидентами"</title>
 </head>
+
+<script>
+    function edit_mode(id) {
+        let show = document.getElementsByClassName('editform_' + id.toString());
+        let hidden = document.getElementsByClassName('text_' + id.toString());
+
+        let arr_style = {
+            'none' : 'block',
+            'block' : 'none'
+        }
+        let arr_type = {
+            'text' : 'hidden',
+            'hidden' : 'text',
+        }
+
+        for (i = 0; i < show.length; i++) {
+            console.log(show[i].type = arr_type[show[i].type])
+            console.log(hidden[i].style.display = arr_style[hidden[i].style.display])
+        }
+    }
+</script>
+
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -82,11 +106,12 @@
                         <option value="Единичный">Единичный</option>
                     </select>
                     <br>
-                    <label class="form-label" for="type">Тип инцидента</label>
+                    <label class="form-label" for="type">Укрупнённая группа инцидента</label>
                     <select id="group_view" name="group_view" class="form-control" required>
-                        <option value="1"></option>
-                        <option value="2">Редактор</option>
-                        <option value="3">Наблюдатель</option>
+                        @foreach($data_types as $d)
+                            <option value="{{$d->id}}">{{$d->name}}</option>
+                        @endforeach
+
                     </select>
                     <br>
                     <label class="form-label" for="group_view">Описание инцидента</label>
