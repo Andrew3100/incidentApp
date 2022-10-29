@@ -16,6 +16,7 @@ use App\Http\Controllers\MainController as MainController;
 
 Route::get('/', [MainController::class, 'main']);
 Route::get('/add', [MainController::class, 'addIncident']);
+Route::get('/edit', [MainController::class, 'editIncident']);
 
 
 Route::get('/dashboard', function () {

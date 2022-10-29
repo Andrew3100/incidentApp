@@ -27,4 +27,18 @@ class MainController extends Controller
         echo "<script>window.location.replace('/');</script>";
     }
 
+
+    public function editIncident(Request $request) {
+        $incident = new incident();
+        $upd = [
+            'header' => $request->input('header'),
+            'type' => $request->input('type'),
+            'group_view' => $request->input('group_view'),
+            'description' => $request->input('description')
+        ];
+        $incident->where('id', '=' , $request->input('record_id'))->update(
+            $upd
+        );
+        echo "<script>window.location.replace('/');</script>";
+    }
 }

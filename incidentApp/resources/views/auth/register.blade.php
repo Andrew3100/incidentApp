@@ -19,6 +19,7 @@
                 <label for="password_confirmation" class="form-label">Подтвердите пароль</label>
                 <input id="password_confirmation" type="password" name="password_confirmation" class="form-control" required>
                 <br>
+                <button class="btn btn-success">Зарегистрироваться</button>
             </form>
         </div>
         <div class="col"></div>

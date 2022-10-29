@@ -28,10 +28,17 @@
             'hidden' : 'text',
         }
 
-        for (i = 0; i < show.length; i++) {
+
+
+        // -2 в цикле, т.к. в учётных системах не принято редактировать даты создания чего-либо. Поэтому формы для дат создания и обновления не выводим
+        for (i = 0; i < show.length-2; i++) {
             console.log(show[i].type = arr_type[show[i].type])
             console.log(hidden[i].style.display = arr_style[hidden[i].style.display])
         }
+
+        let hidden_selector = document.getElementById('selector_for_hidden' + id.toString())
+        hidden_selector.style.display = 'block'
+
     }
 </script>
 

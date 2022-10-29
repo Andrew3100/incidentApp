@@ -105,7 +105,7 @@ CREATE TABLE `incidents` (
   `updated_at` datetime DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -114,7 +114,7 @@ CREATE TABLE `incidents` (
 
 LOCK TABLES `incidents` WRITE;
 /*!40000 ALTER TABLE `incidents` DISABLE KEYS */;
-INSERT INTO `incidents` VALUES (1,'Новый инцидент','Найдены обломки осколков сбитых ракет','Массовый',6,1,'2022-10-27 12:21:44','2022-10-27 12:21:44'),(2,'Ещё один новый инцидент','Длинное описание инцидента','Массовый',1,1,'2022-10-27 12:59:49','2022-10-27 12:59:49');
+INSERT INTO `incidents` VALUES (1,'Новый инцидент','ДТП на кольцевой дороге','Единичный',2,1,'2022-10-29 15:14:56','2022-10-29 15:14:56');
 /*!40000 ALTER TABLE `incidents` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -217,7 +217,7 @@ CREATE TABLE `users` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -226,13 +226,9 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'Фуников Андрей','funikov.1997@mail.ru',NULL,'$2y$10$F.RqebCrjKMeqQg1jWXjqeKlig.C.7A3qwdiUNiEAZKRtNhKZy6ua',NULL,'2022-10-26 05:55:57','2022-10-26 05:55:57');
+INSERT INTO `users` VALUES (1,'Фуников Андрей','funikov.1997@mail.ru',NULL,'$2y$10$F.RqebCrjKMeqQg1jWXjqeKlig.C.7A3qwdiUNiEAZKRtNhKZy6ua',NULL,'2022-10-26 05:55:57','2022-10-26 05:55:57'),(2,'Пётр Иванович Королёв','korolev@mail.ru',NULL,'$2y$10$GIDvqHZFCceVL1Hye5e0juQ0aAGCUWQTSC1Hgg3bLQM6DdqkGOgBO',NULL,'2022-10-29 12:12:18','2022-10-29 12:12:18');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Dumping routines for database 'laravel'
---
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -243,4 +239,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-10-28 19:12:35
+-- Dump completed on 2022-10-29 18:15:35
