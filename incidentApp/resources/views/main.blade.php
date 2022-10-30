@@ -61,11 +61,13 @@
 {{--                                <input onfocusout="edit_mode({{$d->id}})" type="hidden" class="form-control editform_{{$d->id}}" style="" value="{{\App\Models\incident_groups::find($d->group_view)->name}}">--}}
                                 <select style="display: none" class="form-select editform_{{$d->id}}" name="group_view" id="selector_for_hidden{{$d->id}}" required>
 
-                                    @foreach($data_types as $dd)
+                                    {{--Укрупнённая категория данной записи в режиме редактирования--}}
+                                    <option value="{{\App\Models\incident_groups::find($d->group_view)->id}}">{{\App\Models\incident_groups::find($d->group_view)->name}}</option>
+                                @foreach($data_types as $dd)
 
                                         <option value="{{$dd->id}}">{{$dd->name}}</option>
 
-                                    @endforeach
+                                @endforeach
 
                                 </select>
                             </td>
