@@ -20,6 +20,7 @@ class MainController extends Controller
         $incident->type = $request->input('type');
         $incident->group_view = $request->input('group_view');
         $incident->description = $request->input('description');
+        $incident->user = $request->input('user_inc');
         $incident->status = 1;
         $incident->updated_at = date('d-m-Y, H:i:s',time());
         $incident->created_at = date('d-m-Y, H:i:s',time());

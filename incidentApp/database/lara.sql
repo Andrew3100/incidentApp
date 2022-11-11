@@ -100,10 +100,11 @@ CREATE TABLE `incidents` (
   `header` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `type` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user` int(11) NOT NULL,
   `group_view` int(11) NOT NULL,
   `status` int(11) NOT NULL,
-  `updated_at` datetime DEFAULT NULL,
-  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime NOT NULL,
+  `created_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -114,7 +115,7 @@ CREATE TABLE `incidents` (
 
 LOCK TABLES `incidents` WRITE;
 /*!40000 ALTER TABLE `incidents` DISABLE KEYS */;
-INSERT INTO `incidents` VALUES (1,'Новый инцидент','ДТП на кольцевой дороге','Единичный',2,1,'2022-10-29 15:14:56','2022-10-29 15:14:56');
+INSERT INTO `incidents` VALUES (1,'Новый инцидент для Королёва','Описание инцидента, с которым должен разобраться Королёв','Массовый',2,3,1,'2022-11-11 13:05:04','2022-11-11 13:05:04');
 /*!40000 ALTER TABLE `incidents` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -130,7 +131,7 @@ CREATE TABLE `migrations` (
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -139,7 +140,7 @@ CREATE TABLE `migrations` (
 
 LOCK TABLES `migrations` WRITE;
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
-INSERT INTO `migrations` VALUES (1,'2019_12_14_000001_create_personal_access_tokens_table',1),(2,'2022_10_26_145421_create_incidents_table',2),(3,'2022_10_26_154001_create_usergroups_table',3),(4,'2022_10_26_154329_create_groups_table',4),(5,'2022_10_26_160147_create_incident_groups_table',5),(6,'2022_10_26_161523_create_incident_groups_users_table',6);
+INSERT INTO `migrations` VALUES (1,'2019_12_14_000001_create_personal_access_tokens_table',1),(2,'2022_10_26_145421_create_incidents_table',2),(3,'2022_10_26_154001_create_usergroups_table',3),(4,'2022_10_26_154329_create_groups_table',4),(5,'2022_10_26_160147_create_incident_groups_table',5),(6,'2022_10_26_161523_create_incident_groups_users_table',6),(7,'2022_11_11_125337_create_incidents_table',7),(8,'2022_11_11_130349_create_incidents_table',8);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -239,4 +240,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-10-29 18:15:35
+-- Dump completed on 2022-11-11 16:07:51

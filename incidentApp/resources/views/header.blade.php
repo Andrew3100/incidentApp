@@ -121,6 +121,14 @@
 
                     </select>
                     <br>
+                    <label class="form-label" for="type">Назначить пользователю</label>
+                    <select id="group_view" name="user_inc" class="form-control" required>
+                    @foreach(\App\Models\User::all() as $user)
+                            <option value="{{$user->id}}">{{$user->name}}</option>
+                        @endforeach
+
+                    </select>
+                    <br>
                     <label class="form-label" for="group_view">Описание инцидента</label>
                     <textarea id="description" class="form-control" name="description"></textarea>
 {{--                    <button class="">Сохранить</button>--}}
