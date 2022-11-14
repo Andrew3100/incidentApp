@@ -41,9 +41,9 @@
                         <form method="get" action="/edit">
                         <tr>
                             <input type="hidden" value="{{$d->id}}" name="record_id">
-                            <th scope="row">
-                                {{$d->id}}
-                            </th>
+                                <th scope="row">
+                                    <a style="text-decoration: none" href="/card?id={{$d->id}}">{{$d->id}}</a>
+                                </th>
                             <td>
                                 <span class="text_{{$d->id}}" style="display: block" ondblclick="edit_mode({{$d->id}})">{{$d->header}}</span>
                                 <input  name="header" type="hidden" class="form-control editform_{{$d->id}}" style="" value="{{$d->header}}">

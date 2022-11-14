@@ -42,4 +42,10 @@ class MainController extends Controller
         );
         echo "<script>window.location.replace('/');</script>";
     }
+
+    public function showCard(Request $request) {
+        $data = new incident();
+        return view('card',['data' => 'Карточка инцидента']);
+    }
+
 }
