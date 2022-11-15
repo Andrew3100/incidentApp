@@ -6,7 +6,6 @@
 <br>
 
 @php
-
 $header = \App\Models\incident::find(request("id"));
 $status = \App\Models\statuses::find($header->status)->name;
 $description = $header->description;
@@ -14,7 +13,7 @@ $description = $header->description;
 
     <div class="container">
         <div class="row">
-            <div class="col-8 text-center">
+            <div class="col-6 text-center">
                 <div class="card border-primary mb-3" style="max-width: 25rem;">
                     <div class="card-header">{{ $header->header }}</div>
                     <div class="card-body text-primary">
@@ -29,7 +28,19 @@ $description = $header->description;
                     <br>
                 </div>
             </div>
-            <div class="col-4 text-center">
+            <div class="col-6 text-center">
+
+                <nav id="navbar-example2" class="navbar navbar-light bg-light">
+                    <a class="navbar-brand" href="#">Комментарии по инциденту</a>
+                </nav>
+                <div data-spy="scroll" data-target="#navbar-example2" data-offset="0" class="scrollspy-example">
+
+                    @foreach(\App\Models\comments::all()->where() as $result)
+                        {{  11  }}
+                    @endforeach
+                    <h4 id="fat">@fat</h4>
+                    <p>123</p>
+                </div>
 
             </div>
         </div>
