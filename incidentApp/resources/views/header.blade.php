@@ -63,6 +63,13 @@
                             Создать новый инцидент
                         </button>
                     </li>
+                    <li class="nav-item">
+                        <!-- Button trigger modal -->
+                        <a  class="btn btn-primary" style="margin-left: 7px;" href="/user_groups">
+                            Пользовательские группы
+                        </a>
+                    </li>
+
             </ul>
             <li class="nav-item dropdown d-flex">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">

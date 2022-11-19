@@ -21,6 +21,8 @@ Route::get('/card', [MainController::class, 'showCard']);
 Route::get('/addMessage', [MainController::class, 'addMessage']);
 Route::get('/change_status', [MainController::class, 'change_status']);
 Route::get('/change_user', [MainController::class, 'change_user']);
+Route::get('/user_groups', [MainController::class, 'user_groups']);
+Route::get('/check_categories', [MainController::class, 'check_categories']);
 
 
 Route::get('/dashboard', function () {

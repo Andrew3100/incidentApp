@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\comments;
 use App\Models\incident;
+use App\Models\incident_groups_user;
 use App\Models\incidentModel;
 use Illuminate\Http\Request;
 
@@ -82,6 +83,46 @@ class MainController extends Controller
         $id = $request->input('incident_id');
         echo "<script>window.location.replace('/card?id=$id');</script>";
     }
+
+
+
+    public function user_groups(Request $request) {
+        return view('groups',['data' => 'Пользовательские группы инцидента']);
+    }
+
+
+    public function check_categories(Request $request) {
+
+        // смотрим все категории и пишем их в массив методом toArray()
+        $arr = \App\Models\incident_groups::all()->toArray();
+
+        // все имеющиеся категории пишем в массив
+        foreach ($arr as $ar) {
+            $cats[] = $ar['id'];
+        }
+
+        //затем ищем категории, которые были отмечены галочкой при откправке настроек прав
+        foreach ($_GET as $key => $value) {
+            if ($key != 'uid') {
+                $cats_checked[] = explode('_',$key)[1];
+            }
+        }
+
+        // удаляем все назначенные права, если они были назначены ранее
+        $arr = \App\Models\incident_groups_user::where('user_id','=',request('uid'))->delete();
+
+        if (isset($cats_checked)) {
+            foreach ($cats_checked as $cat) {
+                $insert = new incident_groups_user();
+                $insert->user_id = request('uid');
+                $insert->incident_group_id = $cat;
+                $insert->save();
+            }
+        }
+        $id = request('uid');
+        echo "<script>window.location.replace('/user_groups?id=$id');</script>";
+    }
+
 
 
 }
