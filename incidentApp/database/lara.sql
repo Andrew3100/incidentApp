@@ -16,6 +16,34 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `comments`
+--
+
+DROP TABLE IF EXISTS `comments`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `comments` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `comment_text` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `card_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `comments`
+--
+
+LOCK TABLES `comments` WRITE;
+/*!40000 ALTER TABLE `comments` DISABLE KEYS */;
+INSERT INTO `comments` VALUES (1,'Текст комментария',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(2,'Ещё',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(3,'Новый комментарий',1,1,'2022-11-19 15:50:13','2022-11-19 15:50:13'),(4,'Ещё блин коммент',1,1,'2022-11-19 15:52:34','2022-11-19 15:52:34'),(5,'Мой новый комментарий по инциденту',2,1,'2022-11-19 16:37:34','2022-11-19 16:37:34'),(6,'Ещё один',2,1,'2022-11-19 16:38:23','2022-11-19 16:38:23');
+/*!40000 ALTER TABLE `comments` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `groups`
 --
 
@@ -106,7 +134,7 @@ CREATE TABLE `incidents` (
   `updated_at` datetime NOT NULL,
   `created_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -115,7 +143,7 @@ CREATE TABLE `incidents` (
 
 LOCK TABLES `incidents` WRITE;
 /*!40000 ALTER TABLE `incidents` DISABLE KEYS */;
-INSERT INTO `incidents` VALUES (1,'Новый инцидент для Королёва','Описание инцидента, с которым должен разобраться Королёв','Массовый',2,3,1,'2022-11-11 13:05:04','2022-11-11 13:05:04');
+INSERT INTO `incidents` VALUES (1,'Новый инцидент для Королёва','Описание инцидента, с которым должен разобраться Королёв','Массовый',1,4,3,'2022-11-19 16:34:46','2022-11-11 13:05:04'),(2,'Новый инцидент','Инцидент на футбольном матче','Массовый',1,6,1,'2022-11-19 16:37:10','2022-11-19 16:36:22');
 /*!40000 ALTER TABLE `incidents` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -131,7 +159,7 @@ CREATE TABLE `migrations` (
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -140,7 +168,7 @@ CREATE TABLE `migrations` (
 
 LOCK TABLES `migrations` WRITE;
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
-INSERT INTO `migrations` VALUES (1,'2019_12_14_000001_create_personal_access_tokens_table',1),(2,'2022_10_26_145421_create_incidents_table',2),(3,'2022_10_26_154001_create_usergroups_table',3),(4,'2022_10_26_154329_create_groups_table',4),(5,'2022_10_26_160147_create_incident_groups_table',5),(6,'2022_10_26_161523_create_incident_groups_users_table',6),(7,'2022_11_11_125337_create_incidents_table',7),(8,'2022_11_11_130349_create_incidents_table',8);
+INSERT INTO `migrations` VALUES (1,'2019_12_14_000001_create_personal_access_tokens_table',1),(2,'2022_10_26_145421_create_incidents_table',2),(3,'2022_10_26_154001_create_usergroups_table',3),(4,'2022_10_26_154329_create_groups_table',4),(5,'2022_10_26_160147_create_incident_groups_table',5),(6,'2022_10_26_161523_create_incident_groups_users_table',6),(7,'2022_11_11_125337_create_incidents_table',7),(8,'2022_11_11_130349_create_incidents_table',8),(9,'2022_11_14_134315_create_statuses_table',9),(10,'2022_11_14_140616_create_comments_table',10),(11,'2022_11_14_142628_create_comments_table',11);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -174,6 +202,32 @@ CREATE TABLE `personal_access_tokens` (
 LOCK TABLES `personal_access_tokens` WRITE;
 /*!40000 ALTER TABLE `personal_access_tokens` DISABLE KEYS */;
 /*!40000 ALTER TABLE `personal_access_tokens` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `statuses`
+--
+
+DROP TABLE IF EXISTS `statuses`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `statuses` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `statuses`
+--
+
+LOCK TABLES `statuses` WRITE;
+/*!40000 ALTER TABLE `statuses` DISABLE KEYS */;
+INSERT INTO `statuses` VALUES (1,'Назначен','2022-11-14 16:48:36','2022-11-14 16:48:36'),(2,'Взят в работу','2022-11-14 16:48:36','2022-11-14 16:48:36'),(3,'Решён','2022-11-14 16:48:36','2022-11-14 16:48:36');
+/*!40000 ALTER TABLE `statuses` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -240,4 +294,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-11-11 16:07:51
+-- Dump completed on 2022-11-19 19:39:28

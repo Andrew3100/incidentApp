@@ -30,6 +30,7 @@
                         <th scope="col">Описание</th>
                         <th scope="col">Тип</th>
                         <th scope="col">Укрупнённая категория</th>
+                        <th scope="col">Статус</th>
                         <th scope="col">Создан</th>
                         <th scope="col">Обновлён</th>
                         <th scope="col">Действия</th>
@@ -71,6 +72,7 @@
 
                                 </select>
                             </td>
+                            <td>{{\App\Models\statuses::find($d->status)->name}}</td>
                             <td>
                                 <span class="text_{{$d->id}}" style="display: block" >{{$d->created_at}}</span>
                                 <input type="hidden" class="form-control editform_{{$d->id}}" style="" value="{{$d->created_at}}">

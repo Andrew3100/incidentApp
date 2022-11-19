@@ -21,8 +21,71 @@ $description = $header->description;
                         <p class="card-text">{{$description}}</p>
                     </div>
                     <div class="row">
-                        <div class="col"><a style="margin-bottom: 15px;" class="btn btn-outline-primary btn-sm">Изменить статус</a></div>
-                        <div class="col"><a style="margin-bottom: 15px;" class="btn btn-outline-primary btn-sm">Передать другому</a></div>
+                        <div class="col"><a style="margin-bottom: 15px;" class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop1">Изменить статус</a></div>
+
+
+                        <!-- Модальное окно для изменения статуса -->
+                        <div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="staticBackdropLabel">Обновление статуса инцидента</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="/change_status">
+                                            <input id="1" type="radio" name="change" value="1" class="form-radio-control"><label style="margin-left: 5px;" for="1" class="form-label">Назначен</label><br>
+                                            <input id="2" type="radio" name="change" value="2" class="form-radio-control"><label style="margin-left: 5px;" for="2" class="form-label">Взят в работу</label><br>
+                                            <input id="3" type="radio" name="change" value="3" class="form-radio-control"><label style="margin-left: 5px;" for="3" class="form-label">Решён</label><br>
+                                            <input name="incident_id" type="hidden" value="{{request("id")}}">
+                                            <button class="btn btn-warning">Изменить статус</button>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col"><a style="margin-bottom: 15px;" class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">Передать другому</a></div>
+
+
+                        <!-- Модальное окно для переназначения пользователя -->
+                        <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="staticBackdropLabel">Обновление статуса инцидента</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="/change_user">
+                                            <select class="form-select" name="group_view" required>
+                                                <option>Выберите категорию</option>
+                                                @foreach(\App\Models\incident_groups::all() as $cat)
+                                                    <option value="{{$cat->id}}">{{$cat->name}}</option>
+                                                @endforeach
+                                            </select>
+                                            <br>
+                                            <select class="form-select" name="user" required>
+                                                <option>Выберите нового пользователя</option>
+                                            @foreach(\App\Models\User::all() as $user)
+                                                    <option value="{{$user->id}}">{{$user->name}}</option>
+                                                @endforeach
+                                            </select>
+                                            <br>
+                                            <input name="incident_id" type="hidden" value="{{request("id")}}">
+                                            <button class="btn btn-warning">Переназначить инцидент</button>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <br>
                     <br>

@@ -55,7 +55,33 @@ class MainController extends Controller
         $comment_add->card_id = $request->input('card_id');
         $comment_add->user_id = $request->input('uid');
         $comment_add->save();
-        echo "<script>window.location.replace('/card?id=$comment_add->user_id');</script>";
+        echo "<script>window.location.replace('/card?id=$comment_add->card_id');</script>";
     }
+
+
+    public function change_status(Request $request) {
+        $new_status = new incident();
+        $upd = [
+            'status' => $request->input('change')
+        ];
+        $new_status->where('id', '=' , $request->input('incident_id'))->update(
+            $upd);
+        $id = $request->input('incident_id');
+        echo "<script>window.location.replace('/card?id=$id');</script>";
+    }
+
+
+    public function change_user(Request $request) {
+        $new_status = new incident();
+        $upd = [
+            'group_view' => $request->input('group_view'),
+            'user' => $request->input('user')
+        ];
+        $new_status->where('id', '=' , $request->input('incident_id'))->update(
+            $upd);
+        $id = $request->input('incident_id');
+        echo "<script>window.location.replace('/card?id=$id');</script>";
+    }
+
 
 }
