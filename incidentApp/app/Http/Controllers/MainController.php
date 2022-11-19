@@ -55,6 +55,7 @@ class MainController extends Controller
         $comment_add->card_id = $request->input('card_id');
         $comment_add->user_id = $request->input('uid');
         $comment_add->save();
+        echo "<script>window.location.replace('/card?id=$comment_add->user_id');</script>";
     }
 
 }
