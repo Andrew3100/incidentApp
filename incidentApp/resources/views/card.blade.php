@@ -34,12 +34,22 @@ $description = $header->description;
                     <a class="navbar-brand" href="#">Комментарии по инциденту</a>
                 </nav>
                 <div data-spy="scroll" data-target="#navbar-example2" data-offset="0" class="scrollspy-example">
-
-                    @foreach(\App\Models\comments::all()->where() as $result)
-                        {{  11  }}
+                    @foreach(\App\Models\comments::all()->where('card_id',request("id")) as $result)
+                        <div class="alert alert-primary" role="alert">
+                            <div style="text-align: left"><p>{{$result->created_at}}</p>
+                            <p>{{\App\Models\User::find($result->user_id)->name}}</p></div>
+                            <div></div>
+                            <div class="alert alert-warning" role="alert">
+                                {{$result->comment_text}}
+                            </div>
+                        </div>
                     @endforeach
-                    <h4 id="fat">@fat</h4>
-                    <p>123</p>
+                    <form action="/addMessage" method="get">
+                        <textarea placeholder="Текст комметария..." class="form-control" name="text_comment"></textarea>
+                        <input type="hidden" name="uid" value="{{Auth::user()->id}}">
+                        <input type="hidden" name="card_id" value="{{request("id")}}">
+                        <br><button type="submit" class="btn btn-warning">Добавить комметарий</button>
+                    </form>
                 </div>
 
             </div>

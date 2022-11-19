@@ -18,6 +18,7 @@ Route::get('/', [MainController::class, 'main']);
 Route::get('/add', [MainController::class, 'addIncident']);
 Route::get('/edit', [MainController::class, 'editIncident']);
 Route::get('/card', [MainController::class, 'showCard']);
+Route::get('/addMessage', [MainController::class, 'addMessage']);
 
 
 Route::get('/dashboard', function () {

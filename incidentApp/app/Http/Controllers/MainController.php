@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\comments;
 use App\Models\incident;
 use App\Models\incidentModel;
 use Illuminate\Http\Request;
@@ -46,6 +47,14 @@ class MainController extends Controller
     public function showCard(Request $request) {
         $data = new incident();
         return view('card',['data' => 'Карточка инцидента']);
+    }
+
+    public function addMessage(Request $request) {
+        $comment_add = new comments();
+        $comment_add->comment_text = $request->input('text_comment');
+        $comment_add->card_id = $request->input('card_id');
+        $comment_add->user_id = $request->input('uid');
+        $comment_add->save();
     }
 
 }
