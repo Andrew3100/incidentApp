@@ -79,12 +79,18 @@
                     <li><a class="dropdown-item" href="#">Просмотр профиля</a></li>
                     <li><a class="dropdown-item" href="#">Мои действия</a></li>
                     <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#">Выйти из системы</a></li>
+                    <li><a class="dropdown-item" href="{{ url('/logout') }}"
+                           onclick="event.preventDefault();
+      document.getElementById('logout-form').submit();">
+                            Выйти из системы
+                        </a></li>
                 </ul>
             </li>
                 @endif
 
-
+            <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                {{ csrf_field() }}
+            </form>
 
             @if(!Auth::check())
             <div class="d-flex">
